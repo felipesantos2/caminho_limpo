@@ -1,3 +1,19 @@
+# Caminho Limpo
+
+O Caminho Limpo é um projeto colaborativo para registrar, visualizar e acompanhar lugares que precisam de cuidado. O primeiro produto planejado é um micro feed moderado de relatos territoriais, preparado para evoluir para um mapa colaborativo.
+
+## Documentação do projeto
+
+- [Índice da documentação](docs/README.md)
+- [Visão do ecossistema de relatos](docs/ecossistema-de-relatos.md)
+- [TODO do MVP portfoliável](docs/TODO.md)
+
+Fluxo principal do MVP:
+
+> **relatar → armazenar → moderar → publicar → consultar**
+
+---
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">

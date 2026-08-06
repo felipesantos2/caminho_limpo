@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caminho Limpo | Reciclagem e Descarte Consciente</title>
+    <meta name="description"
+        content="Transformamos vias e caminhos sujos em espaços limpos. Junte-se ao movimento Caminho Limpo.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        verde: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-gray-800 bg-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm border-b border-gray-100 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-verde-700">
+                Caminho Limpo
+            </a>
+            <div class="hidden md:flex gap-8 text-sm text-gray-600">
+                <a href="#problema" class="hover:text-verde-600">O Problema</a>
+                <a href="#solucao" class="hover:text-verde-600">A Solução</a>
+                <a href="#impacto" class="hover:text-verde-600">Impacto</a>
+                <a href="#contato" class="hover:text-verde-600">Contato</a>
+            </div>
+            <a href="#contato"
+                class="bg-verde-600 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-verde-700 transition">
+                Participe
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative pt-24 pb-0">
+        <div class="relative h-[70vh] overflow-hidden">
+            <img src="/attached_assets/stock_images/dirty_road_trash_lit_8e340d45.jpg" alt="Estrada com lixo e entulho"
+                class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16 text-white">
+                <div class="max-w-4xl">
+                    <p class="text-verde-400 font-medium mb-3">Esse é o caminho que temos hoje.</p>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Vias sujas, entulhos abandonados, lixo por toda parte.
+                    </h1>
+                    <p class="text-xl text-gray-200 mb-8 max-w-2xl">
+                        Milhares de toneladas de resíduos são descartados irregularmente todos os dias nas ruas,
+                        estradas e terrenos do Brasil.
+                    </p>
+                    <a href="#solucao"
+                        class="inline-flex items-center gap-2 bg-verde-600 text-white px-8 py-4 rounded-full font-medium hover:bg-verde-700 transition">
+                        Veja como mudar isso
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O Problema -->
+    <section id="problema" class="py-20 px-6 bg-gray-900 text-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <p class="text-verde-400 font-medium mb-3">O Problema</p>
+                <h2 class="text-3xl lg:text-4xl font-bold">
+                    Caminhos bloqueados pelo descaso
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="relative rounded-xl overflow-hidden aspect-[4/3]">
+                    <img src="/attached_assets/stock_images/dirty_road_trash_lit_bac5cce5.jpg" alt="Lixo em via pública"
+                        class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30"></div>
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <p class="text-white font-medium">Lixo nas ruas</p>
+                        <p class="text-gray-300 text-sm">Descarte irregular todos os dias</p>
+                    </div>
+                </div>
+
+                <div class="relative rounded-xl overflow-hidden aspect-[4/3]">
+                    <img src="/attached_assets/stock_images/construction_debris__4fd7f4d9.jpg"
+                        alt="Entulho de construção" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30"></div>
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <p class="text-white font-medium">Entulho abandonado</p>
+                        <p class="text-gray-300 text-sm">Restos de obra em locais proibidos</p>
+                    </div>
+                </div>
+
+                <div class="relative rounded-xl overflow-hidden aspect-[4/3]">
+                    <img src="/attached_assets/stock_images/dirty_road_trash_lit_dd126944.jpg" alt="Poluição em estrada"
+                        class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30"></div>
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <p class="text-white font-medium">Estradas poluídas</p>
+                        <p class="text-gray-300 text-sm">Vias tomadas por resíduos</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <p class="text-4xl font-bold text-red-400">79 milhões</p>
+                    <p class="text-gray-400 mt-2">de toneladas de lixo geradas por ano no Brasil</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-bold text-red-400">40%</p>
+                    <p class="text-gray-400 mt-2">têm destinação inadequada</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-bold text-red-400">3 mil</p>
+                    <p class="text-gray-400 mt-2">lixões ainda ativos no país</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- A Solução -->
+    <section id="solucao" class="relative py-0">
+        <div class="relative h-[70vh] overflow-hidden">
+            <img src="/attached_assets/stock_images/clean_empty_road_hig_f31fc767.jpg" alt="Estrada limpa e bonita"
+                class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16 text-white">
+                <div class="max-w-4xl">
+                    <p class="text-verde-400 font-medium mb-3">Esse é o caminho que queremos.</p>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Vias limpas, natureza preservada, futuro garantido.
+                    </h2>
+                    <p class="text-xl text-gray-200 max-w-2xl">
+                        O <strong>Caminho Limpo</strong> trabalha para transformar essa realidade através de coleta
+                        responsável, educação ambiental e ação comunitária.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Funciona -->
+    <section class="py-20 px-6 bg-verde-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <p class="text-verde-600 font-medium mb-3">Nossa Atuação</p>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">
+                    Como limpamos o caminho
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="w-12 h-12 bg-verde-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-verde-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-2">Mapeamento</h3>
+                    <p class="text-gray-600 text-sm">Identificamos pontos críticos de descarte irregular na cidade.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="w-12 h-12 bg-verde-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-verde-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-2">Coleta</h3>
+                    <p class="text-gray-600 text-sm">Organizamos mutirões e coletas programadas de resíduos.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="w-12 h-12 bg-verde-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-verde-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-2">Reciclagem</h3>
+                    <p class="text-gray-600 text-sm">Encaminhamos materiais para cooperativas de reciclagem.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="w-12 h-12 bg-verde-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-verde-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-2">Educação</h3>
+                    <p class="text-gray-600 text-sm">Conscientizamos a população sobre descarte correto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ação -->
+    <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <img src="/attached_assets/stock_images/volunteer_cleaning_s_dba5bb6b.jpg"
+                    alt="Voluntários limpando ruas" class="rounded-xl shadow-lg w-full object-cover aspect-[4/3]">
+            </div>
+            <div>
+                <p class="text-verde-600 font-medium mb-3">Ação Comunitária</p>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                    Juntos, limpamos o caminho.
+                </h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Nossos voluntários já realizaram mais de <strong>50 mutirões</strong> de limpeza em bairros,
+                    estradas e áreas verdes. Cada ação remove toneladas de lixo e transforma a paisagem urbana.
+                </p>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-center gap-3">
+                        <span class="w-6 h-6 bg-verde-100 rounded-full flex items-center justify-center">
+                            <svg class="w-4 h-4 text-verde-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </span>
+                        <span class="text-gray-700">+200 voluntários ativos</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="w-6 h-6 bg-verde-100 rounded-full flex items-center justify-center">
+                            <svg class="w-4 h-4 text-verde-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </span>
+                        <span class="text-gray-700">+30 toneladas de lixo recolhidas</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="w-6 h-6 bg-verde-100 rounded-full flex items-center justify-center">
+                            <svg class="w-4 h-4 text-verde-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </span>
+                        <span class="text-gray-700">+15 bairros beneficiados</span>
+                    </li>
+                </ul>
+                <a href="#contato"
+                    class="inline-flex items-center gap-2 bg-verde-600 text-white px-6 py-3 rounded-full font-medium hover:bg-verde-700 transition">
+                    Quero ser voluntário
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impacto -->
+    <section id="impacto" class="py-20 px-6 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <p class="text-verde-600 font-medium mb-3">Nosso Impacto</p>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">
+                    Cada caminho limpo faz a diferença
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <img src="/attached_assets/stock_images/clean_empty_road_hig_866dd472.jpg" alt="Estrada limpa"
+                        class="rounded-xl shadow-lg w-full object-cover aspect-[4/3]">
+                </div>
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="text-4xl font-bold text-verde-600">-70%</div>
+                            <div>
+                                <p class="font-medium">Menos lixo nas ruas</p>
+                                <p class="text-gray-500 text-sm">nos bairros onde atuamos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="text-4xl font-bold text-verde-600">85%</div>
+                            <div>
+                                <p class="font-medium">Material reciclado</p>
+                                <p class="text-gray-500 text-sm">do total coletado em mutirões</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="text-4xl font-bold text-verde-600">+500</div>
+                            <div>
+                                <p class="font-medium">Famílias impactadas</p>
+                                <p class="text-gray-500 text-sm">com ruas mais limpas e seguras</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contato" class="py-20 px-6 bg-verde-700 text-white">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-6">
+                O caminho limpo começa com você.
+            </h2>
+            <p class="text-verde-100 text-lg mb-10">
+                Seja voluntário, denuncie pontos de descarte irregular ou apoie nossa causa. Cada ação conta.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="mailto:contato@caminholimpo.org"
+                    class="bg-white text-verde-700 px-8 py-4 rounded-full font-semibold hover:bg-verde-50 transition">
+                    Fale Conosco
+                </a>
+                <a href="https://wa.me/5511999999999" target="_blank"
+                    class="border-2 border-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition">
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6 bg-gray-900">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-white font-bold text-2xl mb-3">Caminho Limpo</h3>
+            <p class="text-gray-400 mb-8">
+                Limpando vias, transformando vidas, construindo futuros.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-10">
+                <a href="mailto:contato@caminholimpo.org"
+                    class="flex items-center gap-2 text-gray-300 hover:text-verde-400 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    contato@caminholimpo.org
+                </a>
+                <a href="https://wa.me/5511999999999" target="_blank"
+                    class="flex items-center gap-2 text-gray-300 hover:text-verde-400 transition">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                    (11) 99999-9999
+                </a>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8">
+                <p class="text-gray-500 text-sm">&copy; 2024 Caminho Limpo. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

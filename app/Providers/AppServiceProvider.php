@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Laravel\Head\Enums\OgType;
 use Laravel\Head\Facades\Head;
 use Laravel\Head\HeadBuilder;
 
@@ -26,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Head::defaults(fn (HeadBuilder $head) => $head
             ->title('Nosso Caminho Limpo')
-            ->description('Nosso caminho começa com você'));
+            ->description('Nosso caminho começa com você'))
+            ->canonical()
+            ->og(siteName: 'Nosso Caminho', type: OgType::Website)
+            ->searchableByRobots()
+            ->preconnect('https://localhost');
     }
 }

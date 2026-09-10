@@ -16,6 +16,11 @@ Este diretório concentra a documentação de produto e planejamento do Caminho 
    - formulário, moderação e micro feed;
    - segurança, testes e preparação do portfólio.
 
+3. [MVP de relatos](mvp-relatos.md)
+   - fluxo já implementado;
+   - explicação das colunas e valores fechados;
+   - telas, API e comandos de validação.
+
 ## Escopo atual
 
 O primeiro produto deve completar este percurso:

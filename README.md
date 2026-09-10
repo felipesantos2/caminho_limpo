@@ -7,6 +7,7 @@ O Caminho Limpo é um projeto colaborativo para registrar, visualizar e acompanh
 - [Índice da documentação](docs/README.md)
 - [Visão do ecossistema de relatos](docs/ecossistema-de-relatos.md)
 - [TODO do MVP portfoliável](docs/TODO.md)
+- [Base implementada do MVP de relatos](docs/mvp-relatos.md)
 
 Fluxo principal do MVP:
 

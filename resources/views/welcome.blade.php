@@ -47,9 +47,9 @@
                     class="rounded-lg px-3 py-2 text-sm font-medium text-stone-600 transition hover:bg-green-50 hover:text-green-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Impacto</a>
             </div>
 
-            <a href="#contato"
+            <a href="{{ route('management.reports.create') }}"
                 class="hidden items-center gap-2 rounded-lg bg-green-700 px-5 py-2.5 text-sm font-semibold text-white shadow-xs transition hover:bg-green-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700 md:inline-flex">
-                Participe
+                Relatar um local
                 <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-6-6 6 6-6 6" />
                 </svg>
@@ -79,9 +79,9 @@
                     Solução</a>
                 <a href="#impacto"
                     class="rounded-lg px-3 py-3 font-medium text-stone-700 transition hover:bg-green-50 hover:text-green-800 focus-visible:outline-2 focus-visible:outline-green-600">Impacto</a>
-                <a href="#contato"
+                <a href="{{ route('management.reports.create') }}"
                     class="mt-2 inline-flex items-center justify-center gap-2 rounded-lg bg-green-700 px-5 py-3 font-semibold text-white transition hover:bg-green-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700">
-                    Participe
+                    Relatar um local
                     <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M5 12h14m-6-6 6 6-6 6" />
@@ -458,33 +458,35 @@
     </footer>
 
     <script>
-        const navigationToggle = document.querySelector('#navigation-toggle');
-        const mobileNavigation = document.querySelector('#mobile-navigation');
-        const menuIcon = navigationToggle.querySelector('[data-menu-icon]');
-        const closeIcon = navigationToggle.querySelector('[data-close-icon]');
+        (() => {
+            const navigationToggle = document.querySelector('#navigation-toggle');
+            const mobileNavigation = document.querySelector('#mobile-navigation');
+            const menuIcon = navigationToggle.querySelector('[data-menu-icon]');
+            const closeIcon = navigationToggle.querySelector('[data-close-icon]');
 
-        const setNavigationOpen = (isOpen) => {
-            navigationToggle.setAttribute('aria-expanded', String(isOpen));
-            navigationToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
-            mobileNavigation.classList.toggle('hidden', !isOpen);
-            menuIcon.classList.toggle('hidden', isOpen);
-            closeIcon.classList.toggle('hidden', !isOpen);
-        };
+            const setNavigationOpen = (isOpen) => {
+                navigationToggle.setAttribute('aria-expanded', String(isOpen));
+                navigationToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+                mobileNavigation.classList.toggle('hidden', !isOpen);
+                menuIcon.classList.toggle('hidden', isOpen);
+                closeIcon.classList.toggle('hidden', !isOpen);
+            };
 
-        navigationToggle.addEventListener('click', () => {
-            setNavigationOpen(navigationToggle.getAttribute('aria-expanded') !== 'true');
-        });
+            navigationToggle.addEventListener('click', () => {
+                setNavigationOpen(navigationToggle.getAttribute('aria-expanded') !== 'true');
+            });
 
-        mobileNavigation.querySelectorAll('a').forEach((link) => {
-            link.addEventListener('click', () => setNavigationOpen(false));
-        });
+            mobileNavigation.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => setNavigationOpen(false));
+            });
 
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && navigationToggle.getAttribute('aria-expanded') === 'true') {
-                setNavigationOpen(false);
-                navigationToggle.focus();
-            }
-        });
+            document.body.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && navigationToggle.getAttribute('aria-expanded') === 'true') {
+                    setNavigationOpen(false);
+                    navigationToggle.focus();
+                }
+            });
+        })();
     </script>
 </body>
 

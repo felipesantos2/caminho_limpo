@@ -75,6 +75,8 @@
             ></div>
         </div>
 
+        <p class="text-base-content/55 mt-3 text-xs">Segure Ctrl e use a roda do mouse para ampliar o mapa.</p>
+
         @if ($mapReports === [])
             <p class="text-base-content/55 mt-3 text-sm">
                 Nenhum relato possui coordenadas. Use o mapa do formulário para marcar os próximos locais.

@@ -28,6 +28,12 @@ self.addEventListener('fetch', (event) => {
     }
 
     if (new URL(request.url).pathname.startsWith('/build/')) {
-        event.respondWith(caches.match(request).then((cached) => cached ?? fetch(request)));
+        event.respondWith(
+            caches.open(CACHE_NAME).then((cache) => cache.match(request).then((cached) => cached ?? fetch(request)
+                .then((response) => {
+                    cache.put(request, response.clone());
+                    return response;
+                }))),
+        );
     }
 });

@@ -1,8 +1,8 @@
 <?php
 
-use App\Livewire\Management\CollectionPoints\Index as CollectionPoints;
 use App\Livewire\Management\Dashboard;
 use App\Livewire\Management\ImageAnalysis\Index as ImageAnalysis;
+use App\Livewire\Management\MunicipalityGeofences\Index as MunicipalityGeofences;
 use App\Livewire\Management\Reports\Create as CreateReport;
 use App\Livewire\Management\Reports\Edit as EditReport;
 use App\Livewire\Management\Reports\Index as ManageReports;
@@ -20,7 +20,8 @@ Route::livewire('/relatos/{report}', ShowReport::class)->name('reports.show');
 
 Route::livewire('/gestao', Dashboard::class)->name('management.dashboard');
 Route::livewire('/gestao/analise-de-imagens', ImageAnalysis::class)->name('management.image-analysis.index');
-Route::livewire('/gestao/gaiolas', CollectionPoints::class)->name('management.collection-points.index');
+Route::livewire('/gestao/areas-municipais', MunicipalityGeofences::class)
+    ->name('management.municipality-geofences.index');
 
 Route::prefix('gestao/relatos')->name('management.reports.')->group(function (): void {
     Route::livewire('/', ManageReports::class)->name('index');

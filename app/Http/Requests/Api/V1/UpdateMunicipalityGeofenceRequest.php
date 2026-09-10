@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\Api\V1;
 
-use App\Support\CollectionPointRules;
+use App\Support\MunicipalityGeofenceRules;
 use Illuminate\Foundation\Http\FormRequest;
 
-final class UpdateCollectionPointRequest extends FormRequest
+final class UpdateMunicipalityGeofenceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,6 +22,12 @@ final class UpdateCollectionPointRequest extends FormRequest
      */
     public function rules(): array
     {
-        return CollectionPointRules::all();
+        return MunicipalityGeofenceRules::all($this->route('municipality_geofence')?->id);
+    }
+
+    /** @return array<string, string> */
+    public function messages(): array
+    {
+        return MunicipalityGeofenceRules::messages();
     }
 }

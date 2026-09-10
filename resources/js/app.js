@@ -25,6 +25,20 @@ const addMapTiles = (map) => {
     }).addTo(map);
 };
 
+const requireControlKeyForWheelZoom = (map) => {
+    const container = map.getContainer();
+    const ignoreUnmodifiedWheel = (event) => {
+        if (!event.ctrlKey) {
+            event.stopImmediatePropagation();
+        }
+    };
+
+    container.addEventListener('wheel', ignoreUnmodifiedWheel, { capture: true, passive: true });
+    map.on('unload', () => {
+        container.removeEventListener('wheel', ignoreUnmodifiedWheel, { capture: true });
+    });
+};
+
 const validPosition = (latitude, longitude) => {
     const lat = Number.parseFloat(latitude);
     const lng = Number.parseFloat(longitude);
@@ -53,10 +67,11 @@ document.addEventListener('alpine:init', () => {
                 const currentPosition = validPosition(this.latitude, this.longitude);
                 const center = currentPosition ?? [settings.defaultLatitude, settings.defaultLongitude];
 
-                this.map = L.map(this.$refs.map, { scrollWheelZoom: false }).setView(
+                this.map = L.map(this.$refs.map, { scrollWheelZoom: true }).setView(
                     center,
                     currentPosition ? 15 : settings.defaultZoom,
                 );
+                requireControlKeyForWheelZoom(this.map);
                 addMapTiles(this.map);
 
                 if (currentPosition) {
@@ -123,10 +138,11 @@ document.addEventListener('alpine:init', () => {
 
         init() {
             this.$nextTick(() => {
-                this.map = L.map(this.$refs.map, { scrollWheelZoom: false }).setView(
+                this.map = L.map(this.$refs.map, { scrollWheelZoom: true }).setView(
                     [settings.defaultLatitude, settings.defaultLongitude],
                     settings.defaultZoom,
                 );
+                requireControlKeyForWheelZoom(this.map);
                 addMapTiles(this.map);
 
                 const bounds = [];
@@ -193,41 +209,43 @@ document.addEventListener('alpine:init', () => {
         },
     }));
 
-    // Mapa operacional para cadastrar e consultar gaiolas de coleta.
-    Alpine.data('collectionPointsMap', (settings) => ({
+    // Geocercas circulares usadas como referência para cada município.
+    Alpine.data('municipalityGeofencesMap', (settings) => ({
         latitude: settings.latitude,
         longitude: settings.longitude,
+        radiusKm: settings.radiusKm,
         map: null,
         candidate: null,
 
         init() {
             this.$nextTick(() => {
-                this.map = L.map(this.$refs.map, { scrollWheelZoom: false }).setView(
+                this.map = L.map(this.$refs.map, { scrollWheelZoom: true }).setView(
                     [settings.defaultLatitude, settings.defaultLongitude],
                     settings.defaultZoom,
                 );
+                requireControlKeyForWheelZoom(this.map);
                 addMapTiles(this.map);
 
-                const bounds = [];
+                const bounds = L.latLngBounds();
 
-                settings.points.forEach((point) => {
-                    const position = validPosition(point.latitude, point.longitude);
+                settings.geofences.forEach((geofence) => {
+                    const position = validPosition(geofence.latitude, geofence.longitude);
 
                     if (!position) {
                         return;
                     }
 
-                    L.circleMarker(position, {
-                        radius: 8,
-                        color: '#ffffff',
+                    const circle = L.circle(position, {
+                        radius: geofence.radiusMeters,
+                        color: '#2563eb',
                         weight: 2,
-                        fillColor: point.status === 'active' ? '#2563eb' : '#64748b',
-                        fillOpacity: 0.95,
-                    }).addTo(this.map).bindTooltip(point.name);
-                    bounds.push(position);
+                        fillColor: '#3b82f6',
+                        fillOpacity: 0.14,
+                    }).addTo(this.map).bindTooltip(geofence.municipality);
+                    bounds.extend(circle.getBounds());
                 });
 
-                if (bounds.length > 0) {
+                if (bounds.isValid()) {
                     this.map.fitBounds(bounds, { padding: [28, 28], maxZoom: 14 });
                 }
 
@@ -239,6 +257,7 @@ document.addEventListener('alpine:init', () => {
                 this.map.on('click', ({ latlng }) => this.placeCandidate(latlng.lat, latlng.lng));
                 this.$watch('latitude', () => this.syncCandidate());
                 this.$watch('longitude', () => this.syncCandidate());
+                this.$watch('radiusKm', () => this.syncCandidate());
                 window.setTimeout(() => this.map?.invalidateSize(), 100);
             });
         },
@@ -246,18 +265,26 @@ document.addEventListener('alpine:init', () => {
         placeCandidate(latitude, longitude, updateCoordinates = true) {
             if (this.candidate) {
                 this.candidate.setLatLng([latitude, longitude]);
+                this.candidate.setRadius(this.radiusMeters());
             } else {
-                this.candidate = L.marker([latitude, longitude], { draggable: true }).addTo(this.map);
-                this.candidate.on('dragend', ({ target }) => {
-                    const position = target.getLatLng();
-                    this.placeCandidate(position.lat, position.lng);
-                });
+                this.candidate = L.circle([latitude, longitude], {
+                    radius: this.radiusMeters(),
+                    color: '#15803d',
+                    weight: 3,
+                    fillColor: '#22c55e',
+                    fillOpacity: 0.18,
+                }).addTo(this.map);
             }
 
             if (updateCoordinates) {
                 this.latitude = latitude.toFixed(7);
                 this.longitude = longitude.toFixed(7);
             }
+        },
+
+        radiusMeters() {
+            const radius = Number.parseFloat(this.radiusKm);
+            return Number.isFinite(radius) ? radius * 1000 : 10000;
         },
 
         syncCandidate() {

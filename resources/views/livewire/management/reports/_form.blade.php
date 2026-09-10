@@ -182,7 +182,7 @@
 
             <p class="text-base-content/55 mt-3 text-xs">
                 Não é necessário descobrir as coordenadas manualmente. Elas são preenchidas pela foto, pela busca ou
-                pelo mapa.
+                pelo mapa. Segure Ctrl e use a roda do mouse para ampliar.
             </p>
 
             @if ($plusCode)

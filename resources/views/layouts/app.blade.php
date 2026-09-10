@@ -56,6 +56,7 @@
                 <x-menu-item title="Relatos" icon="o-clipboard-document-list" route="management.reports.index" />
                 <x-menu-item title="Relatar um local" icon="o-plus-circle" route="management.reports.create" />
                 <x-menu-item title="Análise de imagens" icon="o-photo" route="management.image-analysis.index" />
+                <x-menu-item title="Gaiolas de coleta" icon="o-map-pin" route="management.collection-points.index" />
                 <x-menu-separator />
                 <x-menu-item title="Mural público" icon="o-map-pin" route="reports.index" />
                 <x-menu-item title="Página inicial" icon="o-home" route="home" />

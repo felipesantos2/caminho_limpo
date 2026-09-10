@@ -26,5 +26,6 @@ class DatabaseSeeder extends Seeder
         );
 
         $this->call(RegionalDebrisReportSeeder::class);
+        $this->call(CollectionPointSeeder::class);
     }
 }

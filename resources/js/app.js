@@ -192,6 +192,85 @@ document.addEventListener('alpine:init', () => {
             this.map?.remove();
         },
     }));
+
+    // Mapa operacional para cadastrar e consultar gaiolas de coleta.
+    Alpine.data('collectionPointsMap', (settings) => ({
+        latitude: settings.latitude,
+        longitude: settings.longitude,
+        map: null,
+        candidate: null,
+
+        init() {
+            this.$nextTick(() => {
+                this.map = L.map(this.$refs.map, { scrollWheelZoom: false }).setView(
+                    [settings.defaultLatitude, settings.defaultLongitude],
+                    settings.defaultZoom,
+                );
+                addMapTiles(this.map);
+
+                const bounds = [];
+
+                settings.points.forEach((point) => {
+                    const position = validPosition(point.latitude, point.longitude);
+
+                    if (!position) {
+                        return;
+                    }
+
+                    L.circleMarker(position, {
+                        radius: 8,
+                        color: '#ffffff',
+                        weight: 2,
+                        fillColor: point.status === 'active' ? '#2563eb' : '#64748b',
+                        fillOpacity: 0.95,
+                    }).addTo(this.map).bindTooltip(point.name);
+                    bounds.push(position);
+                });
+
+                if (bounds.length > 0) {
+                    this.map.fitBounds(bounds, { padding: [28, 28], maxZoom: 14 });
+                }
+
+                const current = validPosition(this.latitude, this.longitude);
+                if (current) {
+                    this.placeCandidate(current[0], current[1], false);
+                }
+
+                this.map.on('click', ({ latlng }) => this.placeCandidate(latlng.lat, latlng.lng));
+                this.$watch('latitude', () => this.syncCandidate());
+                this.$watch('longitude', () => this.syncCandidate());
+                window.setTimeout(() => this.map?.invalidateSize(), 100);
+            });
+        },
+
+        placeCandidate(latitude, longitude, updateCoordinates = true) {
+            if (this.candidate) {
+                this.candidate.setLatLng([latitude, longitude]);
+            } else {
+                this.candidate = L.marker([latitude, longitude], { draggable: true }).addTo(this.map);
+                this.candidate.on('dragend', ({ target }) => {
+                    const position = target.getLatLng();
+                    this.placeCandidate(position.lat, position.lng);
+                });
+            }
+
+            if (updateCoordinates) {
+                this.latitude = latitude.toFixed(7);
+                this.longitude = longitude.toFixed(7);
+            }
+        },
+
+        syncCandidate() {
+            const position = validPosition(this.latitude, this.longitude);
+            if (position) {
+                this.placeCandidate(position[0], position[1], false);
+            }
+        },
+
+        destroy() {
+            this.map?.remove();
+        },
+    }));
 });
 
 if ('serviceWorker' in navigator && import.meta.env.PROD) {

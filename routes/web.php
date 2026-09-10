@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Management\CollectionPoints\Index as CollectionPoints;
 use App\Livewire\Management\Dashboard;
 use App\Livewire\Management\ImageAnalysis\Index as ImageAnalysis;
 use App\Livewire\Management\Reports\Create as CreateReport;
@@ -19,6 +20,7 @@ Route::livewire('/relatos/{report}', ShowReport::class)->name('reports.show');
 
 Route::livewire('/gestao', Dashboard::class)->name('management.dashboard');
 Route::livewire('/gestao/analise-de-imagens', ImageAnalysis::class)->name('management.image-analysis.index');
+Route::livewire('/gestao/gaiolas', CollectionPoints::class)->name('management.collection-points.index');
 
 Route::prefix('gestao/relatos')->name('management.reports.')->group(function (): void {
     Route::livewire('/', ManageReports::class)->name('index');

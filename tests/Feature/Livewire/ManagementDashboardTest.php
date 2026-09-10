@@ -30,6 +30,7 @@ it('shows institutional indicators charts and recent reports', function () {
 
     $component = Livewire::test(Dashboard::class)
         ->assertSee('Visão geral')
+        ->assertSee('Mapa dos relatos')
         ->assertSee('Relatos por categoria')
         ->assertSee('Situação dos relatos')
         ->assertSee($received->address);
@@ -40,7 +41,8 @@ it('shows institutional indicators charts and recent reports', function () {
         'published'       => 1,
         'this_month'      => 3,
     ])->and($component->get('statusChart.data.datasets.0.data'))->toBe([1, 1, 1, 0, 1])
-        ->and($component->get('categoryChart.data.datasets.0.data'))->toBe([2, 1, 1]);
+        ->and($component->get('categoryChart.data.datasets.0.data'))->toBe([2, 1, 1])
+        ->and($component->get('mapReports'))->toHaveCount(4);
 });
 
 it('shows guidance instead of empty charts when no reports exist', function () {

@@ -17,6 +17,12 @@ return [
 
     'organization_name' => env('APP_ORGANIZATION_NAME', 'Gestão ambiental municipal'),
 
+    'map' => [
+        'default_latitude' => (float) env('APP_MAP_DEFAULT_LATITUDE', -18.5122),
+        'default_longitude' => (float) env('APP_MAP_DEFAULT_LONGITUDE', -44.5550),
+        'default_zoom' => (int) env('APP_MAP_DEFAULT_ZOOM', 6),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

@@ -28,6 +28,12 @@ final class Index extends Component
     #[Url]
     public string $status = '';
 
+    public bool $deleteModal = false;
+
+    public ?string $reportToDelete = null;
+
+    public ?string $reportToDeleteAddress = null;
+
     public function updated(string $property): void
     {
         if (in_array($property, ['search', 'category', 'status'], true)) {
@@ -35,9 +41,29 @@ final class Index extends Component
         }
     }
 
-    public function delete(string $protocol, DeleteReport $action): void
+    public function confirmDelete(string $protocol): void
     {
-        $action->handle(Report::query()->where('protocol', $protocol)->firstOrFail());
+        $report = Report::query()->where('protocol', $protocol)->firstOrFail();
+
+        $this->reportToDelete = $report->protocol;
+        $this->reportToDeleteAddress = $report->address;
+        $this->deleteModal = true;
+    }
+
+    public function cancelDelete(): void
+    {
+        $this->reset('deleteModal', 'reportToDelete', 'reportToDeleteAddress');
+    }
+
+    public function delete(DeleteReport $action): void
+    {
+        if ($this->reportToDelete === null) {
+            return;
+        }
+
+        $action->handle(Report::query()->where('protocol', $this->reportToDelete)->firstOrFail());
+
+        $this->reset('deleteModal', 'reportToDelete', 'reportToDeleteAddress');
 
         session()->flash('success', 'Relato excluído com sucesso.');
     }
@@ -60,11 +86,13 @@ final class Index extends Component
             ->paginate(10);
 
         return view('livewire.management.reports.index', [
-            'reports'          => $reports,
-            'categories'       => ReportCategoryEnum::options(),
-            'statuses'         => ReportStatusEnum::options(),
-            'totalReports'     => Report::query()->count(),
-            'receivedReports'  => Report::query()->where('status', ReportStatusEnum::Received->value)->count(),
+            'reports'               => $reports,
+            'categories'            => ReportCategoryEnum::options(),
+            'statuses'              => ReportStatusEnum::options(),
+            'totalReports'          => Report::query()->count(),
+            'awaitingTriageReports' => Report::query()
+                ->whereIn('status', [ReportStatusEnum::Received->value, ReportStatusEnum::Triage->value])
+                ->count(),
             'publishedReports' => Report::query()->where('status', ReportStatusEnum::Published->value)->count(),
             'headers'          => [
                 ['key' => 'address', 'label' => 'Relato'],

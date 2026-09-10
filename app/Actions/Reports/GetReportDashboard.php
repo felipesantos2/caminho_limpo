@@ -15,6 +15,13 @@ final readonly class GetReportDashboard
      *     summary: array{total: int, awaiting_triage: int, published: int, this_month: int},
      *     by_status: array{labels: array<int, string>, values: array<int, int>},
      *     by_category: array{labels: array<int, string>, values: array<int, int>},
+     *     map_reports: array<int, array{
+     *         protocol: string,
+     *         address: string,
+     *         latitude: float,
+     *         longitude: float,
+     *         status: array{value: string, label: string}
+     *     }>,
      *     recent_reports: array<int, array{
      *         protocol: string,
      *         address: string,
@@ -60,6 +67,24 @@ final readonly class GetReportDashboard
 
         $categoriesWithReports = collect(ReportCategoryEnum::cases())
             ->filter(fn (ReportCategoryEnum $category): bool => (int) $categoryCounts->get($category->value, 0) > 0);
+
+        $mapReports = Report::query()
+            ->whereNotNull('latitude')
+            ->whereNotNull('longitude')
+            ->orderByDesc('created_at')
+            ->orderByDesc('id')
+            ->get(['protocol', 'address', 'latitude', 'longitude', 'status'])
+            ->map(fn (Report $report): array => [
+                'protocol'  => $report->protocol,
+                'address'   => $report->address,
+                'latitude'  => (float) $report->latitude,
+                'longitude' => (float) $report->longitude,
+                'status'    => [
+                    'value' => $report->status->value,
+                    'label' => $report->status->label(),
+                ],
+            ])
+            ->all();
 
         $recentReports = Report::query()
             ->orderByDesc('created_at')
@@ -110,6 +135,7 @@ final readonly class GetReportDashboard
                     ->values()
                     ->all(),
             ],
+            'map_reports'    => $mapReports,
             'recent_reports' => $recentReports,
         ];
     }

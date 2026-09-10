@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Storage;
     'address',
     'latitude',
     'longitude',
+    'plus_code',
     'status',
     'image_path',
 ])]

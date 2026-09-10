@@ -12,7 +12,7 @@ final class GenerateReportProtocol
     public function handle(): string
     {
         do {
-            $protocol = sprintf('CL-%s-%s', now()->format('Y'), Str::upper(Str::random(8)));
+            $protocol = 'CL-' . Str::ulid();
         } while (Report::query()->where('protocol', $protocol)->exists());
 
         return $protocol;

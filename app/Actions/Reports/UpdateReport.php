@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace App\Actions\Reports;
 
 use App\Models\Report;
+use App\Services\Location\GeneratePlusCode;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Throwable;
 
 final class UpdateReport
 {
+    public function __construct(private readonly GeneratePlusCode $plusCode) {}
+
     /** @param array<string, mixed> $data */
     public function handle(Report $report, array $data): Report
     {
@@ -23,6 +26,10 @@ final class UpdateReport
         }
 
         unset($data['image']);
+
+        $data['plus_code'] = isset($data['latitude'], $data['longitude'])
+            ? $this->plusCode->handle((float) $data['latitude'], (float) $data['longitude'])
+            : null;
 
         try {
             $report->update($data);

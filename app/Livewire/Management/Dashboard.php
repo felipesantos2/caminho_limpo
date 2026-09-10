@@ -24,6 +24,9 @@ final class Dashboard extends Component
     /** @var array<int, array<string, mixed>> */
     public array $recentReports = [];
 
+    /** @var array<int, array<string, mixed>> */
+    public array $mapReports = [];
+
     public function mount(GetReportDashboard $action): void
     {
         $dashboard = $action->handle();
@@ -32,6 +35,13 @@ final class Dashboard extends Component
         $this->statusChart = $this->statusChart($dashboard['by_status']);
         $this->categoryChart = $this->categoryChart($dashboard['by_category']);
         $this->recentReports = $dashboard['recent_reports'];
+        $this->mapReports = array_map(
+            fn (array $report): array => [
+                ...$report,
+                'url' => route('management.reports.show', $report['protocol']),
+            ],
+            $dashboard['map_reports'],
+        );
     }
 
     public function render(): View

@@ -23,6 +23,7 @@ final class ReportResource extends JsonResource
             'address'     => $this->address,
             'latitude'    => $this->latitude,
             'longitude'   => $this->longitude,
+            'plus_code'   => $this->plus_code,
             'status'      => [
                 'value' => $this->status->value,
                 'label' => $this->status->label(),

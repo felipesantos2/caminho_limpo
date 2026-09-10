@@ -38,6 +38,7 @@ it('uses the same Mary layout on report screens but not on the welcome page', fu
         route('reports.show', $report),
         route('management.reports.index'),
         route('management.reports.create'),
+        route('management.reports.show', $report),
         route('management.reports.edit', $report),
     ];
 

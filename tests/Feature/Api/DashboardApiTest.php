@@ -29,12 +29,20 @@ it('returns dashboard indicators and series when authenticated', function () {
         ->assertJsonPath('data.summary.published', 1)
         ->assertJsonPath('data.by_status.values.0', 1)
         ->assertJsonPath('data.by_category.values.0', 1)
+        ->assertJsonPath('data.map_reports.0.protocol', $received->protocol)
         ->assertJsonPath('data.recent_reports.0.protocol', $received->protocol)
         ->assertJsonStructure([
             'data' => [
-                'summary'        => ['total', 'awaiting_triage', 'published', 'this_month'],
-                'by_status'      => ['labels', 'values'],
-                'by_category'    => ['labels', 'values'],
+                'summary'     => ['total', 'awaiting_triage', 'published', 'this_month'],
+                'by_status'   => ['labels', 'values'],
+                'by_category' => ['labels', 'values'],
+                'map_reports' => [[
+                    'protocol',
+                    'address',
+                    'latitude',
+                    'longitude',
+                    'status' => ['value', 'label'],
+                ]],
                 'recent_reports' => [[
                     'protocol',
                     'address',

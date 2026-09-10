@@ -5,13 +5,17 @@ declare(strict_types=1);
 namespace App\Actions\Reports;
 
 use App\Models\Report;
+use App\Services\Location\GeneratePlusCode;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Throwable;
 
 final readonly class CreateReport
 {
-    public function __construct(private GenerateReportProtocol $protocol) {}
+    public function __construct(
+        private GenerateReportProtocol $protocol,
+        private GeneratePlusCode $plusCode,
+    ) {}
 
     /** @param array<string, mixed> $data */
     public function handle(array $data): Report
@@ -21,6 +25,13 @@ final readonly class CreateReport
         $path = $image->store('reports', 'public');
 
         unset($data['image']);
+
+        if (isset($data['latitude'], $data['longitude'])) {
+            $data['plus_code'] = $this->plusCode->handle(
+                (float) $data['latitude'],
+                (float) $data['longitude'],
+            );
+        }
 
         try {
             return Report::query()->create([

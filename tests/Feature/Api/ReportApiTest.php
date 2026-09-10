@@ -24,6 +24,7 @@ it('lists only published reports', function () {
                 'address',
                 'latitude',
                 'longitude',
+                'plus_code',
                 'status' => ['value', 'label'],
                 'image_url',
                 'created_at',
@@ -83,6 +84,7 @@ it('creates a report when authenticated', function () {
     $report = Report::query()->where('protocol', $protocol)->sole();
 
     $this->assertModelExists($report);
+    expect($report->plus_code)->not->toBeNull();
     Storage::disk('public')->assertExists($report->image_path);
 });
 

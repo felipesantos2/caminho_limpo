@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Enums\ReportCategoryEnum;
 use App\Enums\ReportStatusEnum;
 use App\Models\Report;
+use App\Services\Location\GeneratePlusCode;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -20,13 +21,17 @@ class ReportFactory extends Factory
      */
     public function definition(): array
     {
+        $latitude = fake()->latitude(-22.90, -14.20);
+        $longitude = fake()->longitude(-50.90, -39.80);
+
         return [
-            'protocol'    => sprintf('CL-%s-%s', now()->format('Y'), Str::upper(Str::random(8))),
+            'protocol'    => 'CL-' . Str::ulid(),
             'category'    => fake()->randomElement(ReportCategoryEnum::cases()),
             'description' => fake()->sentence(16),
             'address'     => fake()->streetAddress() . ', ' . fake()->city() . '/MG',
-            'latitude'    => fake()->latitude(-22.90, -14.20),
-            'longitude'   => fake()->longitude(-50.90, -39.80),
+            'latitude'    => $latitude,
+            'longitude'   => $longitude,
+            'plus_code'   => app(GeneratePlusCode::class)->handle($latitude, $longitude),
             'status'      => fake()->randomElement(ReportStatusEnum::cases()),
             'image_path'  => fake()->randomElement([
                 'attached_assets/br/problema_lixo.jpg',

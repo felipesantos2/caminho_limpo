@@ -1,32 +1,27 @@
 # Documentação do Caminho Limpo
 
-Este diretório concentra a documentação de produto e planejamento do Caminho Limpo.
+Este diretório concentra o estado atual, as decisões e a evolução prevista do Caminho Limpo.
 
 ## Ordem de leitura
 
-1. [Ecossistema de relatos](ecossistema-de-relatos.md)
-   - visão do produto;
-   - estrutura de locais, relatos e evidências;
-   - evolução para mapa, feed e comunidade;
-   - moderação, privacidade e métricas.
+1. [MVP de relatos](mvp-relatos.md)
+   — fluxo implementado, banco, telas, API, PWA e dados de demonstração.
 
-2. [TODO do MVP portfoliável](TODO.md)
-   - marcos de implementação;
-   - definição de pronto;
-   - formulário, moderação e micro feed;
-   - segurança, testes e preparação do portfólio.
+2. [Decisões do projeto](decisoes-do-projeto.md)
+   — escolhas de produto e código que devem continuar valendo.
 
-3. [MVP de relatos](mvp-relatos.md)
-   - fluxo já implementado;
-   - explicação das colunas e valores fechados;
-   - telas, API e comandos de validação.
+3. [Ecossistema de relatos](ecossistema-de-relatos.md)
+   — caminhos possíveis depois que o uso real for validado.
+
+4. [TODO do MVP portfoliável](TODO.md)
+   — trabalho que ainda falta antes e depois da apresentação.
 
 ## Escopo atual
 
-O primeiro produto deve completar este percurso:
+O produto atual prioriza o percurso interno:
 
-> **relatar → armazenar → moderar → publicar → consultar**
+> **vistoriar → localizar → triar → acompanhar → agir**
 
-Funcionalidades de mapa, perfis, comentários, seguidores e feed algorítmico permanecem fora do MVP até que o fluxo principal seja validado.
+O mural público continua disponível, mas não define o valor do MVP. Perfis sociais, comentários, seguidores e automações avançadas permanecem fora do escopo.
 
 [Voltar ao README principal](../README.md)

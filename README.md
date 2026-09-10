@@ -1,75 +1,50 @@
 # Caminho Limpo
 
-O Caminho Limpo é um projeto colaborativo para registrar, visualizar e acompanhar lugares que precisam de cuidado. O primeiro produto planejado é um micro feed moderado de relatos territoriais, preparado para evoluir para um mapa colaborativo.
+O Caminho Limpo é uma ferramenta simples de gestão territorial para institutos, prefeituras e equipes de campo. O MVP organiza vistorias de descarte irregular, fotos, localização, triagem e pontos operacionais de coleta.
 
-## Documentação do projeto
+O painel de gestão é o produto principal. O mural público existe como uma saída opcional para os registros aprovados, sem depender de participação espontânea para que o sistema tenha valor.
 
-- [Índice da documentação](docs/README.md)
-- [Visão do ecossistema de relatos](docs/ecossistema-de-relatos.md)
-- [TODO do MVP portfoliável](docs/TODO.md)
-- [Base implementada do MVP de relatos](docs/mvp-relatos.md)
+## O que já funciona
 
-Fluxo principal do MVP:
+- dashboard institucional com indicadores, gráficos e mapa;
+- CRUD de relatos com foto, categoria, situação e protocolo ULID;
+- foto como primeiro passo, com leitura de GPS do EXIF quando disponível;
+- busca de endereço e marcação manual com Leaflet/OpenStreetMap;
+- Plus Code calculado e salvo a partir das coordenadas;
+- análise avulsa de imagens no painel;
+- cadastro e mapa de gaiolas de coleta;
+- API REST v1, com escritas e dados de gestão protegidos pelo Sanctum;
+- PWA instalável, dark mode no painel e tela de indisponibilidade offline;
+- dados demonstrativos de cinco municípios do nordeste de Minas Gerais.
 
-> **relatar → armazenar → moderar → publicar → consultar**
+## Ambiente local
 
----
-
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+O projeto usa PHP 8.5, Laravel 13, Livewire 4, Mary UI 2, Sanctum 4, Tailwind CSS 4, Pest 4 e Laravel Sail.
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+vendor/bin/sail up -d
+vendor/bin/sail composer install
+vendor/bin/sail npm install
+vendor/bin/sail artisan migrate:fresh --seed
+vendor/bin/sail artisan storage:link
+vendor/bin/sail npm run build
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+A conta demonstrativa criada pelo seeder usa `demo@caminholimpo.org` e a senha `password`. Ela existe somente para desenvolvimento e apresentação.
 
-## Contributing
+## Validação
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+vendor/bin/sail bin pint --dirty --format agent
+vendor/bin/sail artisan test --compact
+vendor/bin/sail npm run build
+vendor/bin/sail artisan route:list --path=api --except-vendor
+```
 
-## Code of Conduct
+## Documentação
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- [Índice da documentação](docs/README.md)
+- [MVP implementado](docs/mvp-relatos.md)
+- [Decisões do projeto](docs/decisoes-do-projeto.md)
+- [Visão de evolução](docs/ecossistema-de-relatos.md)
+- [Plano histórico e próximos passos](docs/TODO.md)

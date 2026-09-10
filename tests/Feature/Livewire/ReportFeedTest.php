@@ -29,10 +29,10 @@ it('escapes user content on the public detail', function () {
         ->assertDontSee('<script>alert("xss")</script>', escape: false);
 });
 
-it('uses the same Mary layout on report screens but not on the welcome page', function () {
+it('uses the same Mary theme on every screen but only the management panel has the sidebar drawer', function () {
     $report = Report::factory()->published()->create();
 
-    $reportPages = [
+    $panelPages = [
         route('management.dashboard'),
         route('reports.index'),
         route('reports.show', $report),
@@ -42,7 +42,7 @@ it('uses the same Mary layout on report screens but not on the welcome page', fu
         route('management.reports.edit', $report),
     ];
 
-    foreach ($reportPages as $page) {
+    foreach ($panelPages as $page) {
         $this->get($page)
             ->assertOk()
             ->assertSee('main-drawer', escape: false)
@@ -51,13 +51,6 @@ it('uses the same Mary layout on report screens but not on the welcome page', fu
 
     $this->get(route('home'))
         ->assertOk()
+        ->assertSee('theme-controller', escape: false)
         ->assertDontSee('main-drawer', escape: false);
-});
-
-it('isolates the landing navigation script across Livewire visits', function () {
-    $this->get(route('home'))
-        ->assertOk()
-        ->assertSee('(() => {', escape: false)
-        ->assertSee("document.body.addEventListener('keydown'", escape: false)
-        ->assertDontSee("<script>\n        const navigationToggle", escape: false);
 });

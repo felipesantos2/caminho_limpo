@@ -3,7 +3,7 @@
 - O painel de gestão é o produto principal; o mural público é uma saída opcional.
 - O sistema deve ser útil com vistorias da própria equipe, sem depender de relatos espontâneos.
 - Mantenha o MVP simples, legível e funcional. Evite módulos, abstrações e automações sem uso comprovado.
-- Use Livewire com Mary UI e o mesmo layout em todo o painel, incluindo dark mode. A welcome page é a exceção.
+- Use Livewire com Mary UI e o mesmo tema em todo o produto, incluindo dark mode. A página inicial pública compartilha o mesmo design system do painel, com um layout próprio sem o menu lateral de gestão.
 - No cadastro, a foto vem primeiro. Para localizar: tente GPS do EXIF, depois busca de endereço e mapa.
 - “Gaiola” significa geocerca municipal: um círculo definido por centro e raio, não uma estrutura física de coleta.
 - Para cada tela de gestão, preserve um caminho REST/JSON coerente quando ele tiver uso operacional.

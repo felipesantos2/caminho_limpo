@@ -13,7 +13,7 @@ O Caminho Limpo pode ser instalado no celular ou no computador e aberto como apl
 | `public/icons/pwa-512.svg` | Ícone maior e preparado para uso `maskable`. |
 | `resources/js/app.js` | Registra o service worker depois que a página termina de carregar. |
 
-O manifesto e as cores do tema são ligados tanto ao layout do painel quanto à welcome page.
+O manifesto e as cores do tema são ligados tanto ao layout do painel quanto à página inicial pública.
 
 ## Instalação
 

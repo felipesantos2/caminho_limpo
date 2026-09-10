@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Home;
 use App\Livewire\Management\Dashboard;
 use App\Livewire\Management\ImageAnalysis\Index as ImageAnalysis;
 use App\Livewire\Management\MunicipalityGeofences\Index as MunicipalityGeofences;
@@ -11,9 +12,7 @@ use App\Livewire\Reports\Feed as ReportFeed;
 use App\Livewire\Reports\Show as ShowReport;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::livewire('/', Home::class)->name('home');
 
 Route::livewire('/relatos', ReportFeed::class)->name('reports.index');
 Route::livewire('/relatos/{report}', ShowReport::class)->name('reports.show');

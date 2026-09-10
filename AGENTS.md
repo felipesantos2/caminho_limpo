@@ -5,9 +5,10 @@
 - Mantenha o MVP simples, legível e funcional. Evite módulos, abstrações e automações sem uso comprovado.
 - Use Livewire com Mary UI e o mesmo layout em todo o painel, incluindo dark mode. A welcome page é a exceção.
 - No cadastro, a foto vem primeiro. Para localizar: tente GPS do EXIF, depois busca de endereço e mapa.
-- Relatos registram problemas; gaiolas são estruturas operacionais e continuam separadas.
+- “Gaiola” significa geocerca municipal: um círculo definido por centro e raio, não uma estrutura física de coleta.
 - Para cada tela de gestão, preserve um caminho REST/JSON coerente quando ele tiver uso operacional.
 - Rode testes essenciais, Pint e build antes de concluir. Faça commits pequenos depois que cada parte estiver válida.
+- Ao mudar um fluxo, contrato ou decisão, revise as docs afetadas e atualize apenas o necessário, com texto curto e prático.
 - Leia `docs/decisoes-do-projeto.md` e `docs/mvp-relatos.md` antes de mudar o domínio ou o fluxo principal.
 
 <laravel-boost-guidelines>

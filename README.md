@@ -12,7 +12,7 @@ O painel de gestão é o produto principal. O mural público existe como uma sa�
 - busca de endereço e marcação manual com Leaflet/OpenStreetMap;
 - Plus Code calculado e salvo a partir das coordenadas;
 - análise avulsa de imagens no painel;
-- cadastro e mapa de gaiolas de coleta;
+- geocercas municipais definidas por centro e raio;
 - API REST v1, com escritas e dados de gestão protegidos pelo Sanctum;
 - PWA instalável, dark mode no painel e tela de indisponibilidade offline;
 - dados demonstrativos de cinco municípios do nordeste de Minas Gerais.
@@ -46,5 +46,7 @@ vendor/bin/sail artisan route:list --path=api --except-vendor
 - [Índice da documentação](docs/README.md)
 - [MVP implementado](docs/mvp-relatos.md)
 - [Decisões do projeto](docs/decisoes-do-projeto.md)
+- [PWA](docs/pwa.md)
+- [API REST](docs/api-rest.md)
 - [Visão de evolução](docs/ecossistema-de-relatos.md)
 - [Plano histórico e próximos passos](docs/TODO.md)

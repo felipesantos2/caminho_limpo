@@ -10,14 +10,31 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 60);
-            $table->string('content', 1000)->nullable(); // podemos gerar um html para ser rederizado
-            $table->string('media')->nullable();
-            $table->string('slug', 30)->nullable();
-            $table->string('url', 30)->nullable();
-            $table->enum('status', ['published', 'draft', 'pending'])->default('draft');
-            $table->softDeletes();
+            $table->string('protocol', 40)->unique()->comment('Código público usado para consultar o relato.');
+            // Values stay here so future enum changes do not rewrite this schema history.
+            $table->enum('category', [
+                'household_waste',
+                'construction_debris',
+                'bulky_item',
+                'recyclable',
+                'hazardous_waste',
+                'sewage',
+                'abandoned_area',
+                'other',
+            ])
+                ->index()
+                ->comment('Tipo de problema ambiental observado no local.');
+            $table->text('description')->comment('Descrição original informada sobre o local.');
+            $table->string('address')->comment('Endereço aproximado ou referência para encontrar o local.');
+            $table->decimal('latitude', 10, 7)->nullable()->comment('Latitude opcional do ponto informado.');
+            $table->decimal('longitude', 10, 7)->nullable()->comment('Longitude opcional do ponto informado.');
+            $table->enum('status', ['received', 'triage', 'published', 'restricted', 'rejected'])
+                ->default('received')
+                ->index()
+                ->comment('Etapa atual do relato e regra que controla sua publicação.');
+            $table->string('image_path')->comment('Caminho da foto armazenada no disco público.');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

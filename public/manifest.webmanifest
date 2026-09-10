@@ -1,0 +1,37 @@
+{
+    "name": "Caminho Limpo - Gestão territorial",
+    "short_name": "Caminho Limpo",
+    "description": "Registro e acompanhamento de pontos que precisam de cuidado.",
+    "lang": "pt-BR",
+    "start_url": "/gestao?origem=pwa",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#f5f5f4",
+    "theme_color": "#166534",
+    "icons": [
+        {
+            "src": "/icons/pwa-192.svg",
+            "sizes": "192x192",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        },
+        {
+            "src": "/icons/pwa-512.svg",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Abrir painel",
+            "url": "/gestao",
+            "icons": [{ "src": "/icons/pwa-192.svg", "sizes": "192x192", "type": "image/svg+xml" }]
+        },
+        {
+            "name": "Nova vistoria",
+            "url": "/gestao/relatos/criar",
+            "icons": [{ "src": "/icons/pwa-192.svg", "sizes": "192x192", "type": "image/svg+xml" }]
+        }
+    ]
+}

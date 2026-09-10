@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#166534">
+    <title>Sem conexão - Caminho Limpo</title>
+    <style>
+        :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+        body { min-height: 100vh; margin: 0; display: grid; place-items: center; background: #f5f5f4; color: #1c1917; }
+        main { width: min(32rem, calc(100% - 3rem)); }
+        h1 { font-size: 2rem; margin: 0 0 1rem; }
+        p { line-height: 1.7; color: #57534e; }
+        a { display: inline-block; margin-top: 1rem; color: #166534; font-weight: 700; }
+        @media (prefers-color-scheme: dark) {
+            body { background: #111827; color: #f9fafb; }
+            p { color: #d1d5db; }
+            a { color: #86efac; }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Você está sem conexão</h1>
+        <p>O Caminho Limpo precisa de internet para pesquisar endereços, carregar mapas e salvar alterações. Os dados já enviados continuam protegidos.</p>
+        <a href="/gestao">Tentar abrir o painel novamente</a>
+    </main>
+</body>
+</html>

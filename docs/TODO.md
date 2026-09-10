@@ -1,6 +1,6 @@
 # Próximos passos
 
-O MVP já cobre cadastro de vistorias, gestão, mapas, gaiolas, REST e PWA. Esta lista guarda apenas o que ainda importa para colocar o sistema em uso.
+O MVP já cobre cadastro de vistorias, gestão, mapas, geocercas municipais, REST e PWA. Esta lista guarda apenas o que ainda importa para colocar o sistema em uso.
 
 ## Antes de publicar
 
@@ -16,7 +16,7 @@ O MVP já cobre cadastro de vistorias, gestão, mapas, gaiolas, REST e PWA. Esta
 - [ ] registrar quem alterou a situação de um relato;
 - [ ] manter um histórico curto de triagem e atendimento;
 - [ ] permitir marcar um ponto como encaminhado, em atendimento ou resolvido;
-- [ ] registrar a data da última coleta ou manutenção de uma gaiola;
+- [ ] usar as geocercas para filtrar e resumir relatos por município;
 - [ ] filtrar o painel por município e período;
 - [ ] exportar uma lista simples para CSV.
 

@@ -21,7 +21,7 @@ Anotações curtas para não rediscutir escolhas que já fizemos.
 ## Dados e localização
 
 - Categorias e situações com lista fechada usam enums PHP e `ENUM` no banco.
-- Relatos e gaiolas são entidades diferentes: um relato registra um problema; uma gaiola é uma estrutura operacional.
+- Uma “gaiola” neste projeto significa geocerca: um círculo com centro e raio que delimita a área de um município.
 - Coordenadas são armazenadas em sete casas decimais.
 - O Plus Code é calculado localmente, sem chave ou cobrança do Google.
 - A busca usa Nominatim com ação explícita, até cinco resultados e cache de um dia. Não deve virar autocomplete agressivo.
@@ -38,7 +38,7 @@ Anotações curtas para não rediscutir escolhas que já fizemos.
 
 - A API é versionada em `/api/v1` e usa Resources para manter o JSON previsível.
 - A leitura pública de relatos mostra somente itens publicados.
-- Dashboard, gaiolas e qualquer escrita exigem autenticação Sanctum.
+- Dashboard, geocercas municipais e qualquer escrita exigem autenticação Sanctum.
 - As telas administrativas ainda estão abertas para facilitar a apresentação. Autenticação e autorização web são prioridade antes de uso externo.
 
 ## PWA e conectividade

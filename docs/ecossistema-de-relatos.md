@@ -4,7 +4,7 @@ O produto começa como ferramenta de trabalho para quem vistoria e acompanha o t
 
 ## O que existe hoje
 
-Um relato guarda a evidência de um problema: foto, categoria, descrição, endereço, coordenadas, Plus Code e situação. Uma gaiola é outra coisa: representa uma estrutura de coleta mantida pela instituição. Por isso os dois registros não dividem a mesma tabela.
+Um relato guarda a evidência de um problema: foto, categoria, descrição, endereço, coordenadas, Plus Code e situação. A geocerca municipal delimita uma área de referência com um centro e um raio. Ela ajuda a organizar a cobertura territorial sem transformar o município em um endereço textual.
 
 O fluxo atual é curto:
 
@@ -20,7 +20,7 @@ Depois da validação, vale criar um local consolidado. Ele reuniria relatos pr�
 - quantas vezes esse ponto foi vistoriado?
 - quem recebeu o encaminhamento?
 - quanto tempo levou até o atendimento?
-- existe uma gaiola próxima que pode reduzir a recorrência?
+- em qual geocerca municipal o ponto está?
 
 Essa mudança só deve entrar quando a equipe já estiver usando o cadastro atual e souber quais informações realmente consulta.
 

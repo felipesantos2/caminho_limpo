@@ -37,18 +37,15 @@ As coordenadas são opcionais, mas devem ser enviadas juntas. O formulário tent
 
 O mapa usa Leaflet e os blocos cartográficos do OpenStreetMap. A busca usa Nominatim com envio explícito e cache de um dia. O centro inicial pode ser ajustado por `APP_MAP_DEFAULT_LATITUDE`, `APP_MAP_DEFAULT_LONGITUDE` e `APP_MAP_DEFAULT_ZOOM`.
 
-## Gaiolas de coleta
+## Geocercas municipais
 
-As gaiolas são pontos operacionais e não relatos. A tabela `collection_points` mantém:
+No vocabulário do projeto, uma “gaiola” é uma geocerca: um círculo ao redor de um município. A tabela `municipality_geofences` mantém:
 
 | Coluna | Finalidade |
 | --- | --- |
-| `name` | Nome curto usado pela equipe. |
-| `address` | Endereço ou referência operacional. |
-| `latitude` e `longitude` | Ponto obrigatório marcado no mapa. |
-| `plus_code` | Código calculado para compartilhar o ponto. |
-| `status` | Situação fechada: ativa, em manutenção ou inativa. |
-| `notes` | Observação interna opcional. |
+| `municipality` | Município da área. É único e usa um enum com os cinco municípios atendidos. |
+| `center_latitude` e `center_longitude` | Centro do círculo marcado no mapa. |
+| `radius_km` | Raio da área, entre 0,5 e 100 quilômetros. |
 | `created_at` e `updated_at` | Datas de criação e alteração. |
 
 ## Valores fechados
@@ -82,16 +79,16 @@ Status:
 - `/gestao/relatos/{protocolo}`: detalhe administrativo em qualquer situação;
 - `/gestao/relatos/{protocolo}/editar`: edição;
 - `/gestao/analise-de-imagens`: leitura avulsa de GPS e Plus Code de uma foto;
-- `/gestao/gaiolas`: cadastro, mapa e lista de gaiolas;
+- `/gestao/areas-municipais`: cadastro, edição e mapa das geocercas;
 - `/api/v1/reports`: contrato JSON paginado. `GET` é público; `POST`, `PATCH`, `PUT` e `DELETE` exigem Sanctum;
 - `/api/v1/dashboard`: indicadores da dashboard em JSON, protegidos pelo Sanctum;
-- `/api/v1/collection-points`: CRUD JSON das gaiolas, protegido pelo Sanctum.
+- `/api/v1/municipality-geofences`: CRUD JSON das geocercas, protegido pelo Sanctum.
 
 A API aceita `category` e `per_page` como filtros na listagem. A mesma validação usada nas telas é reutilizada nos endpoints de escrita.
 
 ## Dados de demonstração e PWA
 
-O seeder padrão cria 15 focos fictícios de entulho — três em cada um dos municípios Novo Cruzeiro, Águas Formosas, Teófilo Otoni, Itaipé e Catuji — e cinco gaiolas demonstrativas. Os seeders usam chaves estáveis e podem ser executados novamente sem duplicar esses registros.
+O seeder padrão cria 15 focos fictícios de entulho — três em cada um dos municípios Novo Cruzeiro, Águas Formosas, Teófilo Otoni, Itaipé e Catuji — e uma geocerca demonstrativa para cada município. Os seeders usam chaves estáveis e podem ser executados novamente sem duplicar esses registros.
 
 O manifesto permite instalar o Caminho Limpo e oferece atalhos para o painel e uma nova vistoria. O service worker entrega uma tela offline, mas mapas, busca de endereço e gravações continuam dependentes de internet.
 

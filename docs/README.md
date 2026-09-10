@@ -10,10 +10,16 @@ Este diretório concentra o estado atual, as decisões e a evolução prevista d
 2. [Decisões do projeto](decisoes-do-projeto.md)
    — escolhas de produto e código que devem continuar valendo.
 
-3. [Ecossistema de relatos](ecossistema-de-relatos.md)
+3. [PWA](pwa.md)
+   — instalação, cache, atualização, limites offline e diagnóstico.
+
+4. [API REST](api-rest.md)
+   — autenticação, endpoints, exemplos e códigos de resposta.
+
+5. [Ecossistema de relatos](ecossistema-de-relatos.md)
    — caminhos possíveis depois que o uso real for validado.
 
-4. [TODO do MVP portfoliável](TODO.md)
+6. [Próximos passos](TODO.md)
    — trabalho que ainda falta antes e depois da apresentação.
 
 ## Escopo atual

@@ -56,7 +56,7 @@
                         <div class="border-base-content/10 bg-base-100 absolute top-12 left-1/2 z-10 w-52 -translate-x-1/2 rounded-lg border p-3 shadow-lg">
                             <div class="flex items-start gap-3">
                                 <div class="bg-warning/10 text-warning flex size-9 shrink-0 items-center justify-center rounded-lg">
-                                    <x-icon name="o-trash" class="size-5" />
+                                    <x-icon name="o-cube" class="size-5" />
                                 </div>
                                 <div>
                                     <p class="text-sm font-semibold">Entulho de obra</p>

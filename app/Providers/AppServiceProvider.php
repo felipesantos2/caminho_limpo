@@ -7,6 +7,10 @@ use Laravel\Head\Enums\OgType;
 use Laravel\Head\Facades\Head;
 use Laravel\Head\HeadBuilder;
 
+
+use Illuminate\Routing\UrlGenerator;
+
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,8 +27,12 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+    public function boot(UrlGenerator $url): void
     {
+        if (env('APP_ENV') == 'production') { 
+          $url->forceScheme('https');
+        }
+
         Head::defaults(fn (HeadBuilder $head) => $head
             ->title('Nosso Caminho Limpo')
             ->description('Nosso caminho começa com você'))

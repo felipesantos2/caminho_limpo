@@ -30,29 +30,67 @@
             </div>
 
             <x-card
-                title="Mapa público"
-                subtitle="Ocorrências publicadas pela equipe."
+                title="Mural de ocorrências"
+                subtitle="Uma visão simples do que a equipe acompanha."
                 shadow
                 class="border-base-content/10 border"
             >
-                <div
-                    x-data="reportsMap({
-                        reports: @js($mapReports),
-                        defaultLatitude: @js(config('app.map.default_latitude')),
-                        defaultLongitude: @js(config('app.map.default_longitude')),
-                        defaultZoom: @js(config('app.map.default_zoom')),
-                    })"
-                >
-                    <div
-                        wire:ignore
-                        x-ref="map"
-                        role="application"
-                        aria-label="Mapa público de ocorrências"
-                        class="bg-base-200 rounded-box h-[26rem] overflow-hidden"
-                    ></div>
-                    <div class="text-base-content/55 mt-3 flex items-center justify-between gap-3 text-xs">
-                        <span>{{ count($mapReports) }} {{ count($mapReports) === 1 ? 'ocorrência publicada' : 'ocorrências publicadas' }}</span>
-                        <span>Segure Ctrl para ampliar com a roda do mouse.</span>
+                <div class="bg-base-200 rounded-box relative min-h-[26rem] overflow-hidden">
+                    <div class="text-base-content/25 absolute inset-0 opacity-60">
+                        <div class="border-base-content/20 absolute top-[24%] left-[-10%] h-20 w-[120%] -rotate-6 border-t"></div>
+                        <div class="border-base-content/20 absolute top-[54%] left-[-10%] h-20 w-[120%] rotate-3 border-t"></div>
+                        <div class="border-base-content/20 absolute top-[-10%] left-[32%] h-[120%] w-20 rotate-12 border-l"></div>
+                        <div class="border-base-content/20 absolute top-[-10%] left-[68%] h-[120%] w-20 -rotate-12 border-l"></div>
+                    </div>
+
+                    <div class="absolute top-[14%] left-[17%]">
+                        <div class="bg-error text-error-content flex size-9 items-center justify-center rounded-full shadow">
+                            <x-icon name="o-map-pin" class="size-5" />
+                        </div>
+                    </div>
+
+                    <div class="absolute top-[34%] left-[43%]">
+                        <div class="bg-warning text-warning-content flex size-10 items-center justify-center rounded-full shadow">
+                            <x-icon name="o-map-pin" class="size-6" />
+                        </div>
+                        <div class="border-base-content/10 bg-base-100 absolute top-12 left-1/2 z-10 w-52 -translate-x-1/2 rounded-lg border p-3 shadow-lg">
+                            <div class="flex items-start gap-3">
+                                <div class="bg-warning/10 text-warning flex size-9 shrink-0 items-center justify-center rounded-lg">
+                                    <x-icon name="o-trash" class="size-5" />
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold">Entulho de obra</p>
+                                    <p class="text-base-content/60 mt-1 text-xs">Bairro Centro</p>
+                                </div>
+                            </div>
+                            <div class="border-base-content/10 mt-3 flex items-center gap-2 border-t pt-3">
+                                <x-icon name="o-map-pin" class="text-base-content/50 size-4" />
+                                <span class="text-base-content/60 text-xs">Rua das Flores</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="absolute top-[22%] right-[15%]">
+                        <div class="bg-info text-info-content flex size-8 items-center justify-center rounded-full shadow">
+                            <x-icon name="o-map-pin" class="size-5" />
+                        </div>
+                    </div>
+                    <div class="absolute right-[18%] bottom-[15%]">
+                        <div class="bg-success text-success-content flex size-9 items-center justify-center rounded-full shadow">
+                            <x-icon name="o-map-pin" class="size-5" />
+                        </div>
+                    </div>
+                    <div class="absolute bottom-[19%] left-[19%]">
+                        <div class="bg-primary text-primary-content flex size-8 items-center justify-center rounded-full shadow">
+                            <x-icon name="o-map-pin" class="size-5" />
+                        </div>
+                    </div>
+
+                    <div class="border-base-content/10 bg-base-100/90 absolute right-4 bottom-4 rounded-lg border px-3 py-2 backdrop-blur-sm">
+                        <div class="flex items-center gap-2">
+                            <x-icon name="o-map-pin" class="text-primary size-4" />
+                            <span class="text-xs font-medium">Exemplo de visualização</span>
+                        </div>
                     </div>
                 </div>
             </x-card>

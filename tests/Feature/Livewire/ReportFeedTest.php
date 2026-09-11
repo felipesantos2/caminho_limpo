@@ -1,6 +1,5 @@
 <?php
 
-use App\Livewire\Home;
 use App\Livewire\Reports\Feed;
 use App\Models\Report;
 use Livewire\Livewire;
@@ -28,16 +27,4 @@ it('escapes user content on the public detail', function () {
     $this->get(route('reports.show', $report))
         ->assertSee('&lt;script&gt;', escape: false)
         ->assertDontSee('<script>alert("xss")</script>', escape: false);
-});
-
-it('feeds the home map with published reports that have coordinates', function () {
-    $published = Report::factory()->published()->create();
-    Report::factory()->received()->create();
-
-    $mapReports = Livewire::test(Home::class)->get('mapReports');
-
-    expect($mapReports)->toHaveCount(1)
-        ->and($mapReports[0]['protocol'])->toBe($published->protocol)
-        ->and($mapReports[0]['status']['value'])->toBe('published')
-        ->and($mapReports[0]['url'])->toBe(route('reports.show', $published));
 });

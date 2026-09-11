@@ -13,6 +13,7 @@ Anotações curtas para não rediscutir escolhas que já fizemos.
 ## Experiência
 
 - Mary UI é o padrão de todas as telas Livewire, incluindo a página inicial pública, que usa um layout próprio (sem o menu lateral de gestão) mas o mesmo tema, cores e componentes do painel.
+- Componentes Mary UI e tokens do tema vêm antes de CSS e cores manuais; código visual próprio fica restrito a integrações sem componente equivalente, como o mapa Leaflet.
 - O painel deve manter o mesmo layout entre as páginas e funcionar em dark mode.
 - A foto aparece no início do cadastro porque é a primeira evidência usada para validar o local.
 - Ninguém deve precisar descobrir latitude e longitude manualmente: a ordem de tentativa é GPS da foto, busca de endereço e clique no mapa.

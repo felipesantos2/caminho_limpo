@@ -30,38 +30,29 @@
             </div>
 
             <x-card
-                title="O que a equipe enxerga"
-                subtitle="Uma ocorrência do registro à solução."
+                title="Mapa público"
+                subtitle="Ocorrências publicadas pela equipe."
                 shadow
                 class="border-base-content/10 border"
             >
-                <div class="space-y-3">
-                    <div class="bg-base-200 flex items-start gap-3 rounded-xl p-4">
-                        <x-icon name="o-camera" class="text-primary mt-0.5 size-5 shrink-0" />
-                        <div>
-                            <p class="font-semibold">Foto e localização</p>
-                            <p class="text-base-content/60 mt-1 text-sm">
-                                A situação é registrada no local, com coordenadas e referência.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="bg-base-200 flex items-start gap-3 rounded-xl p-4">
-                        <x-icon name="o-clipboard-document-list" class="text-primary mt-0.5 size-5 shrink-0" />
-                        <div>
-                            <p class="font-semibold">Triagem e prioridade</p>
-                            <p class="text-base-content/60 mt-1 text-sm">
-                                A equipe organiza os casos por situação, categoria e município.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="bg-base-200 flex items-start gap-3 rounded-xl p-4">
-                        <x-icon name="o-check-circle" class="text-success mt-0.5 size-5 shrink-0" />
-                        <div>
-                            <p class="font-semibold">Acompanhamento</p>
-                            <p class="text-base-content/60 mt-1 text-sm">
-                                Cada atualização fica registrada para orientar a próxima ação.
-                            </p>
-                        </div>
+                <div
+                    x-data="reportsMap({
+                        reports: @js($mapReports),
+                        defaultLatitude: @js(config('app.map.default_latitude')),
+                        defaultLongitude: @js(config('app.map.default_longitude')),
+                        defaultZoom: @js(config('app.map.default_zoom')),
+                    })"
+                >
+                    <div
+                        wire:ignore
+                        x-ref="map"
+                        role="application"
+                        aria-label="Mapa público de ocorrências"
+                        class="bg-base-200 rounded-box h-[26rem] overflow-hidden"
+                    ></div>
+                    <div class="text-base-content/55 mt-3 flex items-center justify-between gap-3 text-xs">
+                        <span>{{ count($mapReports) }} {{ count($mapReports) === 1 ? 'ocorrência publicada' : 'ocorrências publicadas' }}</span>
+                        <span>Segure Ctrl para ampliar com a roda do mouse.</span>
                     </div>
                 </div>
             </x-card>

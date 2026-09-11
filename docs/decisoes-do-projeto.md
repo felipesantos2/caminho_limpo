@@ -17,6 +17,7 @@ Anotações curtas para não rediscutir escolhas que já fizemos.
 - A foto aparece no início do cadastro porque é a primeira evidência usada para validar o local.
 - Ninguém deve precisar descobrir latitude e longitude manualmente: a ordem de tentativa é GPS da foto, busca de endereço e clique no mapa.
 - A interface deve ser institucional e contida, sem excesso de cartões, badges ou elementos decorativos.
+- A página inicial pública usa o mesmo design system Mary UI, explica o fluxo em poucas seções e não inventa métricas de impacto.
 
 ## Dados e localização
 

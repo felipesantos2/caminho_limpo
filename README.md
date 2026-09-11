@@ -1,6 +1,6 @@
 # Caminho Limpo
 
-O Caminho Limpo é uma ferramenta simples de gestão territorial para institutos, prefeituras e equipes de campo. O MVP organiza vistorias de descarte irregular, fotos, localização, triagem e pontos operacionais de coleta.
+O Caminho Limpo é uma ferramenta simples de gestão territorial para institutos, prefeituras e equipes de campo. O MVP organiza vistorias de descarte irregular, fotos, localização, triagem e geocercas municipais.
 
 O painel de gestão é o produto principal. O mural público existe como uma saída opcional para os registros aprovados, sem depender de participação espontânea para que o sistema tenha valor.
 

@@ -9,6 +9,7 @@
 - Para cada tela de gestão, preserve um caminho REST/JSON coerente quando ele tiver uso operacional.
 - Rode testes essenciais, Pint e build antes de concluir. Faça commits pequenos depois que cada parte estiver válida.
 - Ao mudar um fluxo, contrato ou decisão, revise as docs afetadas e atualize apenas o necessário, com texto curto e prático.
+- Não crie testes de botão, texto ou classe isolados. Teste comportamento real: persistência, validação, autenticação, contratos e fluxos que mudam dados.
 - Leia `docs/decisoes-do-projeto.md` e `docs/mvp-relatos.md` antes de mudar o domínio ou o fluxo principal.
 
 <laravel-boost-guidelines>

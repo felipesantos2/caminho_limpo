@@ -16,7 +16,9 @@
 /node_modules
 # /public/build
 /public/fonts-manifest.dev.json
+/public/fonts/filament
 /public/hot
+/public/js/filament
 /public/storage
 /storage/*.key
 /storage/pail
@@ -27,3 +29,5 @@ Homestead.yaml
 Thumbs.db
 
 lsp-*.php
+
+/public/css/filament

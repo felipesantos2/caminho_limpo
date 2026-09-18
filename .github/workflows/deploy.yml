@@ -32,8 +32,6 @@ jobs:
         server: ${{ secrets.host }}
         username: ${{ secrets.user }}
         password: ${{ secrets.password }}
-        local-dir: theme/
-        server-dir: amuc/
 
     - name: List Files in Repo
       run: "ls ${{ github.workspace }}"

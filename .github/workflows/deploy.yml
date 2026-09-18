@@ -32,6 +32,19 @@ jobs:
         server: ${{ secrets.host }}
         username: ${{ secrets.user }}
         password: ${{ secrets.password }}
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/vendor/**
+          **/.agents/**
+          **/.codex/**
+          **/.claude/**
+          **/.github/skills/**
+          **/.serena/**
+          AGENTS.md
+          CLAUDE.md
+
 
     - name: List Files in Repo
       run: "ls ${{ github.workspace }}"

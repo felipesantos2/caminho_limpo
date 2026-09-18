@@ -44,6 +44,11 @@ jobs:
           **/.serena/**
           AGENTS.md
           CLAUDE.md
+          Dockerfile
+          compose.yml
+          .mcp.json
+          .env
+          .env
 
 
     - name: List Files in Repo
